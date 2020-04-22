@@ -1,0 +1,60 @@
+python manage.py shell
+from gestionPedidos.models import Articulos
+art = Articulos (nombre = 'mesa', seccion='decoracion', precio = 90)
+art4 = Articulos.objects.create(nombre='celular',seccion='tecnologia',precio=1420)
+
+ACTUALIZAR UN ELEMENTO EN LA BASE DE DATOS - UPDATE
+
+In [9]: art.precio = 95
+
+In [10]: art.save()
+
+BORRAR UN ELEMENTO (delete)
+
+In [11]: art5 = Articulos.objects.get(id=2)
+
+In [12]: art5.delete()
+Out[12]: (1, {'gestionPedidos.Articulos': 1})
+
+INGRESAR ELEMENTOS AL POSTRGRADE SQL
+
+PS C:\Users\ASUS\Documents\Programando\Django tuto projects\TiendaOnline> python manage.py makemigrations
+No changes detected
+PS C:\Users\ASUS\Documents\Programando\Django tuto projects\TiendaOnline> python manage.py migrate
+
+In [6]: cli = Clientes(nombre='Luis',direccion='Urb. AVIDGE F-11', telefono='971467843')
+
+In [7]: cli.save()
+
+### PANEL DE ADMINISTRADOR ###
+
+#crear super ususario
+python manage.py createsuperuser
+
+#para hacer un campo opcional
+poner en la funcion ()  de el archivo models a el campo : (blank=True,null=True)
+
+### CADA VEZ QUE SE HAGA UN CAMBIO EN MODELS ###
+
+python manage.py makemigrations
+python manage.py migrate
+
+## PARA PROBAR EL ENVIO DE MAIL ##
+
+from django.core.mail import send_mail
+
+send_mail(
+    'Subject here',
+    'Here is the message.',
+    'from@example.com',
+    ['to@example.com'],
+    fail_silently=False,
+)
+
+
+
+
+
+
+
+
